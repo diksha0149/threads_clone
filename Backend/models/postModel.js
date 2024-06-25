@@ -1,4 +1,3 @@
-import { requiredChakraThemeKeys } from '@chakra-ui/react'
 import mongoose from 'mongoose'
 
 const postSchema = mongoose.Schema({

@@ -62,28 +62,6 @@ export default function SignupCard() {
 			console.log("Error in handleSignup function", error.message);
 		}
 	}
-	// const handleSignup = async () => {
-	// 	try {
-	// 		const res = await fetch("/api/users/signup", {
-	// 			method: "POST",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify(inputs),
-	// 		});
-	// 		const data = await res.json();
-
-	// 		if (data.error) {
-	// 			showToast("Error", data.error, "error");
-	// 			return;
-	// 		}
-
-	// 		localStorage.setItem("user-threads", JSON.stringify(data));
-	// 		setUser(data);
-	// 	} catch (error) {
-	// 		showToast("Error", error, "error");
-	// 	}
-	// };
 
 	return (
 		<Flex align={"center"} justify={"center"}>

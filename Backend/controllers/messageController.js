@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
 import Conversation from "../models/conversationModel.js";
 import Message from "../models/messageModel.js";
+import { getRecipientSocketId } from "../socket/socket.js";
 
 const sendMessage = async (req, res) => {
     try {
@@ -41,6 +41,12 @@ const sendMessage = async (req, res) => {
                 }
             })
         ])
+
+        const recipientSocketId = getRecipientSocketId(recipientId)
+        if(recipientSocketId){
+            io.to(recipientSocketId).emit("newMessage", newMessage)
+        }
+
 
         res.status(201).json(newMessage)
 
@@ -86,7 +92,6 @@ async function getConversations(req, res) {
                 participants => participants._id.toString() !== userId.toString()
             );
         });
-        console.log(conversations);
         res.status(200).json(conversations);
     } catch (error) {
         res.status(500).json({ error: error.message });
