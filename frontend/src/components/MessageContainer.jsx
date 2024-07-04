@@ -19,7 +19,6 @@ const MessageContainer = () => {
     const {socket} = useSocket()
     const setConversations = useSetRecoilState(conversationsAtom)
     const messageEndRef = useRef(null)
-
     useEffect(() =>{
         socket.on("newMessage", (message) => {
             if(selectedConversation._id === message.conversationId){
